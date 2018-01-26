@@ -1,26 +1,26 @@
-import GameMain.playerInput
+import scala.collection.mutable.ArrayBuffer
 
 object AI {
+  def Skynet: String = {
+      val aiRandom = new scala.util.Random().nextInt(3)
+      aiRandom match {
+        case 0 => "Rock".toLowerCase
+        case 1 => "Scissors".toLowerCase
+        case 2 => "Paper".toLowerCase
+        case _ => "Error".toLowerCase
+      }
+    }
 
-
-
-  def Skynet:String = {
-
-
-    val aiRandom = new scala.util.Random
-    val randomnum = aiRandom.nextInt(3)
-
-
-    var aiChoice = ""
-
-    if (randomnum == 0 ) {aiChoice = "Rock"}
-    if (randomnum == 1 ) {aiChoice = "Scissors"}
-    if (randomnum == 2 ) {aiChoice = "Paper"}
-
-    return aiChoice
+  
+  def DumbAi:String = {
+    val aiRandom = new scala.util.Random().nextInt(3)
+    aiRandom match {
+      case 0 => "Rock".toLowerCase
+      case 1 => "Scissors".toLowerCase
+      case 2 => "Paper".toLowerCase
+      case _ => "Error".toLowerCase
+    }
 
   }
-
-
 
 }

@@ -1,37 +1,39 @@
-import java.util.Scanner
-
-import Player.theinput
-import AI.Skynet
+import scala.collection.mutable.ArrayBuffer
 
 object GameMain extends  App {
 
+  var dumbMoves = List()
 
-  val playerInput = scala.io.StdIn.readLine("Enter your Choice  ")
-
-
-  println(theinput("PLAYER" + playerInput))
-  val playerRec = playerInput
-  print("Player" + playerRec)
-  val a = AI.Skynet
-  println("AI" + a)
-//hhhh
-
-  def WhoWins(player1: String, player2: String) = {
-    var result: String = ""
-    (player1, player2) match {
-      case ("Rock", "Paper") => result = "YOU LOSE"
-      case ("Rock", "Scissors") => result = "YOU WIN"
-      case ("Rock", "Rock") => result = "DRAW"
-      case ("Paper", "Scissors") => result = "YOU LOSE"
-      case ("Paper", "Rock") => result = "YOU WIN"
-      case ("Paper", "Paper") => result = "DRAW"
-      case ("Scissors", "Rock") => result = "YOU LOSE"
-      case ("Scissors", "Paper") => result = "YOU WIN"
-      case ("Scissors", "Scissors") => result = "DRAW"
+  def compareStrings(string1:String,string2:String) = {
+    (string1.toLowerCase, string2.toLowerCase) match {
+      case ("rock", "paper") => "Player 2 Wins"
+      case ("rock", "scissors") => "Player 1 Wins"
+      case ("rock", "rock") => "DRAW"
+      case ("paper", "scissors") => "Player 2 Wins"
+      case ("paper", "rock") => "Player 1 Wins"
+      case ("paper", "paper") => "DRAW"
+      case ("scissors", "rock") => "Player 2 Wins"
+      case ("scissors", "paper") => "Player 1 Wins"
+      case ("scissors", "scissors") => "DRAW"
+      case _ => "Unknown Entry"
     }
-    print(result)
   }
 
-  WhoWins(playerInput, a)
+  def playerVsComputer(computer: String):String = {
+    val playerInput = scala.io.StdIn.readLine("Enter your Choice  ")
+    println(s"Player Choice: $playerInput Computer Choice: $computer")
+    compareStrings(playerInput.toLowerCase, computer.toLowerCase)
+  }
+
+  def ComputerVsComputer ={
+    val p1 = AI.Skynet
+    val p2 = AI.DumbAi
+    println(s"Skynet Choice: $p1 Dumb AI Choice: $p2")
+    compareStrings(p1.toLowerCase, p2.toLowerCase)
+  }
+
+  for (i <- 1 to 10) {
+    println(ComputerVsComputer)
+  }
 }
 

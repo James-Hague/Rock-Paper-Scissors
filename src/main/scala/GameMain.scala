@@ -48,10 +48,9 @@ object GameMain extends App {
       }
       println("SKYNET SCORE  " + skynetWin,"  DUMB AI SCORE "  + dumbWin,  "  DRAW " + draw)/////////////
 
-
     }
 
-  for (i <- 1 to 1000) {
+  for (i <- 1 to 10000) {
       println(ComputerVsComputer)
 
      // println("ARRAYTEST" + dumbArrayB)
